@@ -7,35 +7,47 @@
 // @lc code=start
 class Solution {
 public:
+    // void print(vector<int> v)//for debugging
+    // {
+    //     for(int i=0;i<v.size();i++)
+    //         cout<<v[i]<<",";
+    //     cout<<endl;
+    // }
     vector<int> findAnagrams(string s, string p) {
-        sort(p.begin(),p.end());
-        vector<int> result;
+        //sliding window
+
         if(p.size()>s.size())
-            return result;
-        int Pscore=0,Sscore=0;
-        for(int i=0;i<p.size();i++)
-            Pscore += p[i];
-        deque<char> q;
-        for(int i=0;i<s.size();i++)
+            return {};
+
+        vector<int> sMap(26,0);
+        vector<int> pMap(26,0);
+        vector<int> result;
+        int slen = s.size();
+        int plen = p.size();
+
+        //first window
+        for(int i=0;i<plen;i++)
         {
-            q.push_back(s[i]);
-            Sscore+=s[i];
-            if(q.size()>p.size())
-            {
-                char c = q.front();
-                Sscore-=c;
-                q.pop_front();
-            }
-            if(Sscore==Pscore)
-            {
-                string subs;
-                for(int i=0;i<q.size();i++)
-                    subs.push_back(q[i]);
-                sort(subs.begin(),subs.end());
-                if(subs==p)
-                    result.push_back(i-p.size()+1);
-                subs.clear();
-            }
+            ++pMap[p[i]-'a'];
+            ++sMap[s[i]-'a'];
+        }
+        if(pMap==sMap)
+            result.push_back(0);
+
+        //now sliding the window
+        int start=0,end=plen-1;
+        ++end;
+        while(end<slen)
+        {
+            ++sMap[s[end]-'a'];
+            --sMap[s[start]-'a'];
+            // cout<<start<<endl;
+            // print(pMap);
+            // print(sMap);
+            if(pMap==sMap)
+                result.push_back(start+1);
+            ++start;
+            ++end;
         }
         return result;
     }
