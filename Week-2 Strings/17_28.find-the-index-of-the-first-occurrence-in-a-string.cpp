@@ -8,7 +8,9 @@
 class Solution {
 public:
     int strStr(string haystack, string needle) {
-        
+        if(haystack.find(needle)<haystack.size())
+            return haystack.find(needle);
+        return -1;
     }
 };
 // @lc code=end
