@@ -18,21 +18,35 @@ public:
         //10^4 * log(10^4)
         //4 * 10^4 instruction approax
 
-        int size = nums.size();
-        vector<pair<int,int>> v;
-        for(int i=0;i<size;i++)
-            v.push_back({nums[i],i});
-        sort(v.begin(),v.end());
+        // int size = nums.size();
+        // vector<pair<int,int>> v;
+        // for(int i=0;i<size;i++)
+        //     v.push_back({nums[i],i});
+        // sort(v.begin(),v.end());
 
-        int start = 0,end = size-1;
-        while(start<end)
+        // int start = 0,end = size-1;
+        // while(start<end)
+        // {
+        //     if(v[start].first + v[end].first==target)
+        //         return {v[start].second ,v[end].second};
+        //     else if(v[start].first + v[end].first >target)
+        //         --end;
+        //     else
+        //         ++start;
+        // }
+        // return {-1,-1};
+        
+        //approach-3 -> hashmap ( not working)
+        unordered_map<int,int> m;
+        int size = nums.size();
+        for(int i=0;i<size;i++)
         {
-            if(v[start].first + v[end].first==target)
-                return {v[start].second ,v[end].second};
-            else if(v[start].first + v[end].first >target)
-                --end;
-            else
-                ++start;
+            m[nums[i]]=i;
+        }
+        for(int i=0;i<size;i++)
+        {
+            if(m.find(target-nums[i]) != m.end() && m[target-nums[i]]!=m[nums[i]])
+                return {m[nums[i]],m[target-nums[i]]};
         }
         return {-1,-1};
 
