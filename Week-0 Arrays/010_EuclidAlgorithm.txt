@@ -1,0 +1,5 @@
+Gcd(a,b) = Gcd(a%b,b)
+
+gcd(72,24) => gcd(0,24) therefore gcd is 24
+
+Also, Lcm(a,b)*Gcd(a,b) = a*b

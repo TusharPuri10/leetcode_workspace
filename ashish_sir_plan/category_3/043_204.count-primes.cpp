@@ -19,12 +19,12 @@ public:
         v[0]=false;
         v[1]=false;
         int count=0;
-        for(int i=2;i<n;i++)
+        for(long i=2;i<n;i++)
         {
             if(v[i]==false)
                 continue;
             
-            for(int j=2*i;j<n;j=j+i)
+            for(long j=i*i;j<n;j=j+i)
                 v[j]=false;
             
             ++count;
