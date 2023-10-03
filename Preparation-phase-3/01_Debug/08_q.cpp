@@ -7,29 +7,51 @@ N = 5
  ***
   *
 */
-void printPatt(int n){
-    int i=1;
-    while(i<(n)){
-        int gaps = n-2*i,k=1;
-        if(i>(n)/2){
-            int no = (n+1)/2;
-            gaps = 2*(i%no);
+#include<iostream>
+using namespace std;
+int main()
+{
+    int num;
+    cin>>num;
+    int k=-1;
+    int p;
+    if(num&1)
+    {
+        p=num/2;
+    }
+    else
+    {
+        p=num/2-1;
+    }
+    for(int i=1;i<=num;i++)
+    {
+        int gap;
+        if(i>num/2 + 1)
+        {
+            gap = i-(num/2)-1;
+            k-=2;
         }
-        while(k<=gaps/2){
+        else
+        {
+            gap = num-p-i;
+            k+=2;
+        }
+        int j=0;
+        while(j<gap)
+        {
             cout<<" ";
-            k = k + 1;
+            ++j;
         }
-        int ch = n - 1 - gaps;
-        while(ch>=1){
+        for(int i1=0;i1<k;i1++)
+        {
             cout<<"*";
-            ch = ch - 1;
         }
-        k = 1;
-        while(k<=gaps/2){
+        j=0;
+        while(j<gap)
+        {
             cout<<" ";
-            k = k + 1;
+            ++j;
         }
         cout<<"\n";
-        i = i + 1;
     }
 }

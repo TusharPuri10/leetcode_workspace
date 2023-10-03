@@ -9,36 +9,36 @@ N = 4
 #include<iostream>
 using namespace std;
 int main(){
-    int no;
-    cin>>no;
-    int i=1;
-    int n = 2*no;
-    while(i<=(no)){
-        int gaps = n-2*i+1,k=1;
-        int j = i;
-        while(k<=gaps/2){
+    int num;
+    cin>>num;
+    int k=1;
+    for(int i=1;i<=num;i++)
+    {
+        int gap = num-i;
+        int j=0;
+        while(j<gap)
+        {
             cout<<" ";
-            k = k + 1;
+            ++j;
         }
-        int ch = n - gaps + 1, z = (ch+1)/2;
-        while(z>1){
-            cout<<j;
-            j = j - 1;
-            z = z + 1;
+        int i1 = i;
+        while(i1<k)
+        {
+            cout<<i1;
+            ++i1;
         }
-        j = j - 1;
-        z = (ch-1)/2;
-        while(z>=1){
-            j = j - 1;
-            cout<<j;
-            z = z - 1;
+        while(i1>=i)
+        {
+            cout<<i1;
+            --i1;
         }
-        k = 1;
-        while(k<=gaps/2){
+        k+=2;
+        j=0;
+        while(j<gap)
+        {
             cout<<" ";
-            k = k + 1;
+            ++j;
         }
         cout<<"\n";
-        i = i + 1;
     }
 }

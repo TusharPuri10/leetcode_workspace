@@ -14,7 +14,7 @@ int main() {
     int i,j,n;;
     cin>>n;
     for(i=1;i<=n;i++){
-        char p='A'-i;
+        char p='A'+n-i;
         for(j=1;j<=i;j++){
             cout<<p;
             p++;  

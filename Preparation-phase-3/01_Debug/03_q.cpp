@@ -12,23 +12,24 @@ int main(){
     int n;
     cin>>n;
     int i=1;
-    while(i<n){
-        int j = i,count = 2*n+1,gaps=(n-i-1),k=1;
-        while(k<gaps){
+    int count=1;
+    while(i<=n){
+        int gaps=(n-i),k=1,j=0;
+        while(k<=gaps){
             cout<<" ";
             k = k + 1;
         }
-        int m = 1,ch = count - 2*gaps;
-        while(m<ch){
+        while(j<count){
             cout<<"*";
-            m = m + 1;
+            ++j;
         }
         k = 1;
-        while(k<gaps){
+        while(k<=gaps){
             cout<<" ";
             k = k + 1;
         }
         cout<<"\n";
         i = i + 1;
+        count+=2;
     }
 }
